@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # calc.rb
+require "pry"
 
 def prompt(message)
   puts "==> #{message}"
@@ -19,6 +20,7 @@ loop do
       break
     else
       prompt('Please enter a valid number.')
+      binding.pry
     end
   end
 
@@ -47,7 +49,7 @@ loop do
              num1.to_i - num2.to_i
            else
              'Invalid operator, try again.'
-  end
+           end
 
   prompt(output)
 
