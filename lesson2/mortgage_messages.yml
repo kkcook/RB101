@@ -1,0 +1,5 @@
+# messages for mortgage calculator
+
+welcome: 'Welcome to the loan calculator!'
+ask_name: 'What is your name?'
+loan: 'How much is this loan for?'
