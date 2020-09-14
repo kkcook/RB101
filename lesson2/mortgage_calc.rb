@@ -30,6 +30,8 @@ def get_input(num, message)
     break if valid_number?(num)
     prompt(MESSAGES['invalid_entry'])
   end
+
+  return num
 end
 
 # Begin code execution
@@ -38,15 +40,17 @@ prompt(MESSAGES['ask_name'])
 name = gets.chomp
 prompt("Hi, #{name}!")
 
-loan = 0
-get_input(loan, MESSAGES['loan'])
+loan = get_input(loan, MESSAGES['loan'])
 
-months = 0
-get_input(months, MESSAGES['months'])
+months = get_input(months, MESSAGES['months'])
 
-interest_rate = 0
-get_input(interest_rate, MESSAGES['interest'])
+interest = get_input(interest_percent, MESSAGES['interest']) * 0.01
+
+puts interest
+puts months
+puts loan
+
 
 #m = p * (j / (1 - (1 + j)**(-n))) 
-monthly_payment = loan * (1 - (1 + .01 * interest_rate)**(-months))
+monthly_payment = loan * (interest / (1 - (1 + interest)**(-months)))
 puts "this is the monthly payment: #{monthly_payment}"
