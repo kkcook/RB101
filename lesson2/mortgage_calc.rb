@@ -13,21 +13,34 @@ Formula to use: m = p * (j / (1 - (1 + j)**(-n)))
 require 'yaml'
 MESSAGES = YAML.load_file('mortgage_messages.yml')
 
+# Methods
 def prompt(message)
   puts "--> #{message}"
 end
 
 def valid_number?(num)
-  num == num.to_i.to_S
+  num == num.to_i.to_s
 end
 
+def get_input(num, message)
+  loop do
+    prompt(message)
+    num = gets.chomp
+
+    break if valid_number?(num)
+    prompt(MESSAGES['invalid_entry'])
+  end
+end
+
+# Begin code execution
 prompt(MESSAGES['welcome'])
 prompt(MESSAGES['ask_name'])
 name = gets.chomp
 prompt("Hi, #{name}!")
 
-loop do 
-prompt(MESSAGES['loan'])
-loan_ammount = gets.chomp #make sure it's a valid number
-end
+loan = 0
+get_input(loan, MESSAGES['loan'])
+
+months = 0
+get_input(months, MESSAGES['months'])
 
