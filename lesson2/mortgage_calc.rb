@@ -22,7 +22,9 @@ def valid_number?(num)
   num == num.to_i.to_s
 end
 
-def get_input(num, message)
+def get_input(message)
+  num = 0
+
   loop do
     prompt(message)
     num = gets.chomp
@@ -40,17 +42,14 @@ prompt(MESSAGES['ask_name'])
 name = gets.chomp
 prompt("Hi, #{name}!")
 
-loan = get_input(loan, MESSAGES['loan'])
+loan = get_input(MESSAGES['loan'])
 
-months = get_input(months, MESSAGES['months'])
+months = get_input(MESSAGES['months'])
 
-interest = get_input(interest_percent, MESSAGES['interest']) * 0.01
-
-puts interest
-puts months
-puts loan
-
+interest = get_input(MESSAGES['interest'])
+int_rate = 0.0
+int_rate = interest.to_f * 0.01
 
 #m = p * (j / (1 - (1 + j)**(-n))) 
-monthly_payment = loan * (interest / (1 - (1 + interest)**(-months)))
+monthly_payment = loan.to_f * (int_rate / (1 - ( 1+ int_rate)**(-(months.to_f))))
 puts "this is the monthly payment: #{monthly_payment}"
