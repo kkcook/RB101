@@ -44,3 +44,9 @@ get_input(loan, MESSAGES['loan'])
 months = 0
 get_input(months, MESSAGES['months'])
 
+interest_rate = 0
+get_input(interest_rate, MESSAGES['interest'])
+
+#m = p * (j / (1 - (1 + j)**(-n))) 
+monthly_payment = loan * (1 - (1 + .01 * interest_rate)**(-months))
+puts "this is the monthly payment: #{monthly_payment}"
